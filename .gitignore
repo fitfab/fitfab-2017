@@ -1,0 +1,11 @@
+# Node Modules
+node_modules
+
+# logs
+*.log
+
+# mac files
+.DS_Store
+
+# built files
+2017/dist
