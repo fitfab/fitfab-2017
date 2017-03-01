@@ -1,12 +1,16 @@
 // Need babel for this
 // import path from 'path';
 // import webpack from 'webpack';
+// import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
-var path = require('path');
-var webpack = require("webpack");
-var ExtractTextPlugin = require("extract-text-webpack-plugin");
+const path = require('path');
+const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const nodeEnv = process.env.NODE_ENV || 'production';
 
 module.exports = {
+    devtool: 'source-map',
     entry: [
         path.join(__dirname, '/2017/scripts/fitfab.js')
     ],
@@ -23,10 +27,33 @@ module.exports = {
                     use: ['css-loader', 'postcss-loader', 'less-loader'],
                     publicPath: path.resolve(__dirname, './2017/dist')
                 })
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                use: 'babel-loader'
             }
         ]
     },
     plugins: [
-        new ExtractTextPlugin('fitfab.css')
-    ]
+        // extract css file
+        new ExtractTextPlugin('fitfab.css'),
+        // Uglify JS
+        new webpack.optimize.UglifyJsPlugin({
+          compress: {
+            warnings: false
+          },
+          output: {
+            comments: false
+          },
+          sourceMap: true
+        }),
+        // Env plugin
+        new webpack.DefinePlugin({
+          'process.env': { NODE_ENV: JSON.stringify(nodeEnv) }
+        })
+    ],
+    resolve: {
+        extentions: [ '', '.js' ]
+    }
 }

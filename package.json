@@ -8,7 +8,8 @@
     "prod": "webpack -p",
     "build:styles": "lessc ./2017/styles/styles.less ./2017/dist/styles.css",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": "eslint ./2017/scripts/*.*"
+    "eslint": "eslint ./2017/scripts/*.*",
+    "build": "webpack --progress --watch"
   },
   "repository": {
     "type": "git",
@@ -23,7 +24,6 @@
     "Reactjs",
     "Maybe",
     "Rudex",
-    "maybe",
     "Mongodb"
   ],
   "author": "Miguel Julio <miguel.julio.developer@gmail.com> (http://fitfab.com/)",
@@ -35,7 +35,7 @@
   "devDependencies": {
     "babel-core": "6.23.1",
     "babel-loader": "6.3.2",
-    "babel-preset-es2015": "6.22.0",
+    "babel-preset-es2015-native-modules": "6.9.4",
     "css-loader": "0.26.1",
     "eslint": "3.16.1",
     "eslint-config-airbnb": "14.1.0",

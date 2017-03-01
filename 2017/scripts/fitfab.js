@@ -1,3 +1,5 @@
 require('./../styles/styles.less');
 
-console.log('fitfab by Miguel Julio');
+export default function app() {
+    console.log(process.env.NODE_ENV);
+}
