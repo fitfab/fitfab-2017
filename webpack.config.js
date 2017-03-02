@@ -15,8 +15,9 @@ module.exports = {
         path.join(__dirname, '/2017/scripts/fitfab.js')
     ],
     output: {
-        path: path.join(__dirname, '/2017/dist/'),
-        filename: 'fitfab.js'
+        path: path.join(__dirname, '/2017/dist'),
+        filename: 'fitfab.js',
+        publicPath: '/2017/dist',
     },
     module: {
         rules: [
@@ -30,8 +31,10 @@ module.exports = {
             },
             {
                 test: /\.js$/,
-                exclude: /node_modules/,
-                use: 'babel-loader'
+                exclude: [/node_modules/],
+                use: [{
+                  loader: 'babel-loader'
+                }],
             }
         ]
     },
@@ -53,7 +56,8 @@ module.exports = {
           'process.env': { NODE_ENV: JSON.stringify(nodeEnv) }
         })
     ],
-    resolve: {
-        extentions: [ '', '.js' ]
+    // webpack-dev-server setup
+    devServer: {
+        contentBase: path.resolve(__dirname, './'),
     }
 }

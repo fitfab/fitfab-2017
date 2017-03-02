@@ -4,8 +4,8 @@
   "description": "Set fitfab.com to use CSS3 flex box",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack-dev-server",
-    "prod": "webpack -p",
+    "dev": "rm -rf ./2017/dist/*.* && webpack-dev-server  --progress --watch",
+    "prod": "rm -rf ./2017/dist/*.* && webpack -p",
     "build:styles": "lessc ./2017/styles/styles.less ./2017/dist/styles.css",
     "test": "echo \"Error: no test specified\" && exit 1",
     "eslint": "eslint ./2017/scripts/*.*",
@@ -45,6 +45,7 @@
     "extract-text-webpack-plugin": "2.0.0-rc.3",
     "less": "2.7.2",
     "less-loader": "2.2.3",
+    "normalize.css": "5.0.0",
     "postcss-loader": "1.3.1",
     "style-loader": "0.13.1",
     "webpack": "2.2.1",
