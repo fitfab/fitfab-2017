@@ -1,7 +1,3 @@
-// Need babel for this
-// import path from 'path';
-// import webpack from 'webpack';
-// import ExtractTextPlugin from 'extract-text-webpack-plugin';
 
 const path = require('path');
 const webpack = require('webpack');
@@ -17,10 +13,16 @@ module.exports = {
     output: {
         path: path.join(__dirname, '/2017/dist'),
         filename: 'fitfab.js',
-        publicPath: '/2017/dist',
+        publicPath: '/2017/dist'
     },
     module: {
         rules: [
+            {
+                enforce: 'pre',
+                test: /.js$/,
+                exclude: /node_modules/,
+                use: ['eslint-loader']
+            },
             {
                 test: /\.less$/,
                 use: ExtractTextPlugin.extract({
@@ -33,8 +35,8 @@ module.exports = {
                 test: /\.js$/,
                 exclude: [/node_modules/],
                 use: [{
-                  loader: 'babel-loader'
-                }],
+                    loader: 'babel-loader'
+                }]
             }
         ]
     },
@@ -43,21 +45,21 @@ module.exports = {
         new ExtractTextPlugin('fitfab.css'),
         // Uglify JS
         new webpack.optimize.UglifyJsPlugin({
-          compress: {
-            warnings: false
-          },
-          output: {
-            comments: false
-          },
-          sourceMap: true
+            compress: {
+                warnings: false
+            },
+            output: {
+                comments: false
+            },
+            sourceMap: true
         }),
         // Env plugin
         new webpack.DefinePlugin({
-          'process.env': { NODE_ENV: JSON.stringify(nodeEnv) }
+            'process.env': { NODE_ENV: JSON.stringify(nodeEnv) }
         })
     ],
     // webpack-dev-server setup
     devServer: {
-        contentBase: path.resolve(__dirname, './'),
+        contentBase: path.resolve(__dirname, './')
     }
-}
+};

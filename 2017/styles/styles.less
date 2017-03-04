@@ -5,11 +5,33 @@
 body {
     overflow: hidden;
     font-family: 'Work Sans', sans-serif;
+    background: @lightPrimaryColor;
+}
+.mask {
+    width: 90vh;
+    height: 90vh;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: @lightPrimaryColor;
+    // border: 10px solid @secondaryTextColor;
+    border-radius: 600px;
+    overflow: hidden;
+}
+
+.logo {
+    position: absolute;
+    top: 100px;
+    left: 15%;
+    z-index: 100;
 }
 .wrapper {
     display: flex;
     justify-content: flex-start;
     min-height: 100vh;
+    background: url('/2017/images/brooklyn-bridge.jpg') -550px center;
+
     @media @smartphones {
         background: @primaryColor;
     }
@@ -17,31 +39,35 @@ body {
     .panel {
         flex: 0 0 20px;
         overflow: hidden;
-        padding: 0 20px;
-        background: @lightPrimaryColor;
+        padding: 0 15px;
         transition: all 300ms cubic-bezier(0.230, 1.000, 0.320, 1.000);
-        border-right: 1px solid @dividerColor;
+        //border-right: 1px solid @dividerColor;
 
         &-brand {
-            background: url('/2017/images/hawaii_miguel_julio.jpg') center center;
-            flex: 0 0 auto;
+            flex: 0 0 115px;
         }
         &-the-work {
-            background: #dedede;
+            background: @darkPrimaryColor;
+            color: @textPrimaryColor;
         }
         &-of {
-            background: #e8e8e8;
+            background: @accentColor;
+            color: @textPrimaryColor;
+
         }
         &-miguel-julio {
-
-        }
-
-        .logo {
-            margin-top: 45px;
+            background: @lightPrimaryColor;
+            em {
+                display: block;
+                margin-top: 20px;
+            }
+            a {
+                color: @primaryTextColor;
+            }
         }
 
         h2 {
-            transform: rotateZ(90deg) translateY(0px) translateX(43px);
+            transform: rotateZ(90deg) translateY(0px) translateX(180px);
             text-align: right;
             font-size: 20px;
             white-space: nowrap;
@@ -77,13 +103,21 @@ body {
     .panel-the-work:hover,
     .panel-of:hover,
     .panel-miguel-julio:hover {
+        flex: 0 0 250px;
+
         h2 {
-            transform: rotateZ(0) translateY(43px) translateX(0);
+            transform: rotateZ(0) translateY(180px) translateX(0);
         }
-        flex: 3;
+
         & > *:last-child {
-            transform: translateY(63px);
+            transform: translateY(195px);
             opacity: 1;
+        }
+
+        p {
+            margin:0;
+            font-size: 16px;
+            line-height: 1.5;
         }
     }
 }
@@ -97,4 +131,21 @@ ul {
         font-size: 16px;
         line-height: 1.5;
     }
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer;
+    color: @textPrimaryColor;
+    &:hover {
+
+    }
+}
+
+.copyright {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    margin: 0;
+
 }
