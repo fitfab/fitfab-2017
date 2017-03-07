@@ -3,7 +3,8 @@
     "rules": {
         "no-console": 1,
         "indent": ["error", 4],
-        "comma-dangle": ["error", "never"]
+        "comma-dangle": ["error", "never"],
+        "padded-blocks": ["error", "always"]
     },
     "plugins": [
         "react",

@@ -60,6 +60,9 @@ module.exports = {
     ],
     // webpack-dev-server setup
     devServer: {
-        contentBase: path.resolve(__dirname, './')
+        contentBase: path.resolve(__dirname, './'),
+        clientLogLevel: 'none',
+        port: 9000,
+        watchContentBase: true
     }
 };
