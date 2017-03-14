@@ -1,4 +1,4 @@
-
+/* eslint no-console: 0 */
 const path = require('path');
 const webpack = require('webpack');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
@@ -67,7 +67,7 @@ const commonConfig = {
     }
 };
 
-module.exports = function(env) {
+module.exports = function start(env) {
 
     console.log('ENV: ', env);
     return commonConfig;
