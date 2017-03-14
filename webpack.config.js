@@ -5,7 +5,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV || 'production';
 
-module.exports = {
+const commonConfig = {
     devtool: 'source-map',
     entry: [
         path.join(__dirname, '/2017/scripts/fitfab.js')
@@ -65,4 +65,11 @@ module.exports = {
         port: 9000,
         watchContentBase: true
     }
+};
+
+module.exports = function(env) {
+
+    console.log('ENV: ', env);
+    return commonConfig;
+
 };

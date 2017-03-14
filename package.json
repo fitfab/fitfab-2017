@@ -4,12 +4,11 @@
   "description": "Set fitfab.com to use CSS3 flex box",
   "main": "index.js",
   "scripts": {
-    "dev": "rm -rf ./2017/dist/*.* && webpack-dev-server  --progress --watch",
-    "prod": "rm -rf ./2017/dist/*.* && webpack -p",
+    "dev": "rm -rf ./2017/dist/*.* && webpack-dev-server --env development --progress",
+    "build": "rm -rf ./2017/dist/*.* && webpack --env production",
     "build:styles": "lessc ./2017/styles/styles.less ./2017/dist/styles.css",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "eslint": "eslint ./2017/scripts/*.*",
-    "build": "webpack --progress --watch"
+    "eslint": "eslint ./2017/scripts/*.*"
   },
   "repository": {
     "type": "git",
